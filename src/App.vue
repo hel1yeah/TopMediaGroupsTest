@@ -8,9 +8,142 @@
         rest while traveling
       </h1>
       <form class="form">
-        <label class="form-lable">
-          <input type="text" class="form-input" />
-          <span class="form-input-placeholder">First Name</span>
+        <label class="form__lable">
+          <img
+            class="form__lable-img"
+            src="./assets/images/user-name.svg"
+            alt="Name"
+          />
+          <input
+            type="text"
+            class="form-input"
+            :class="{ 'form-input-active': isActiveNameInput }"
+            v-model="isActiveNameInput"
+          />
+          <span
+            class="form-input__placeholder"
+            :class="{ 'form-input__placeholder-active': isActiveNameInput }"
+            >First Name</span
+          >
+        </label>
+        <label class="form__lable">
+          <img
+            class="form__lable-img"
+            src="./assets/images/user-second.svg"
+            alt="Second Name"
+          />
+          <input
+            type="text"
+            class="form-input"
+            :class="{ 'form-input-active': isActiveSecondNameInput }"
+            v-model="isActiveSecondNameInput"
+          />
+          <span
+            class="form-input__placeholder"
+            :class="{
+              'form-input__placeholder-active': isActiveSecondNameInput,
+            }"
+            >Second Name</span
+          >
+        </label>
+        <label class="form__lable">
+          <img
+            class="form__lable-img"
+            src="./assets/images/map-marker.svg"
+            alt="Country"
+          />
+          <input
+            type="text"
+            class="form-input"
+            :class="{ 'form-input-active': isActiveCountryInput }"
+            v-model="isActiveCountryInput"
+          />
+          <span
+            class="form-input__placeholder"
+            :class="{ 'form-input__placeholder-active': isActiveCountryInput }"
+            >Country</span
+          >
+        </label>
+        <label class="form__lable">
+          <img
+            class="form__lable-img"
+            src="./assets/images/phone.svg"
+            alt="Phone"
+          />
+          <input
+            type="text"
+            class="form-input"
+            :class="{ 'form-input-active': isActivePhoneInput }"
+            v-model="isActivePhoneInput"
+          />
+          <span
+            class="form-input__placeholder"
+            :class="{ 'form-input__placeholder-active': isActivePhoneInput }"
+            >Phone</span
+          >
+        </label>
+        <label class="form__lable">
+          <img
+            class="form__lable-img"
+            src="./assets/images/padlock.svg"
+            alt="Password"
+          />
+          <input
+            type="text"
+            class="form-input"
+            :class="{ 'form-input-active': isActivePasswordInput }"
+            v-model="isActivePasswordInput"
+          />
+          <span
+            class="form-input__placeholder"
+            :class="{ 'form-input__placeholder-active': isActivePasswordInput }"
+            >Password</span
+          >
+        </label>
+        <label class="form__lable">
+          <img
+            class="form__lable-img"
+            src="./assets/images/padlock-confirm.svg"
+            alt="Confirm Password"
+          />
+          <input
+            type="text"
+            class="form-input"
+            :class="{ 'form-input-active': isActiveConfirmPasswordInput }"
+            v-model="isActiveConfirmPasswordInput"
+          />
+          <span
+            class="form-input__placeholder"
+            :class="{
+              'form-input__placeholder-active': isActiveConfirmPasswordInput,
+            }"
+            >Confirm password</span
+          >
+        </label>
+        <label class="form__lable">
+          <img
+            class="form__lable-img"
+            src="./assets/images/email.svg"
+            alt="Email"
+          />
+          <input
+            type="text"
+            class="form-input"
+            :class="{ 'form-input-active': isActiveEmailInput }"
+            v-model="isActiveEmailInput"
+          />
+          <span
+            class="form-input__placeholder"
+            :class="{ 'form-input__placeholder-active': isActiveEmailInput }"
+            >Email</span
+          >
+        </label>
+        <label class="form__lable">
+          <input type="checkbox" class="form-checkbox" />
+          <span class="form__checkbox"></span>
+          <span class="form__descr"
+            >I agree to the <span class="">Terms & Conditions</span>
+          </span>
         </label>
       </form>
     </div>
@@ -18,7 +151,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isActiveNameInput: "",
+      isActiveSecondNameInput: "",
+      isActiveCountryInput: "",
+      isActivePhoneInput: "",
+      isActivePasswordInput: "",
+      isActiveConfirmPasswordInput: "",
+      isActiveEmailInput: "",
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -70,29 +215,31 @@ export default {};
 .form {
   font-family: "Rubik-Light", sans-serif;
   font-size: 19px;
+  max-width: 630px;
+  margin: 55px auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 }
-.form-lable {
+.form__lable {
   position: relative;
   width: 300px;
   height: 56px;
   display: block;
-  &::before {
-    content: "";
-    position: absolute;
-    top: 15px;
-    left: 16px;
-    width: 24px;
-    height: 24px;
-    background: url("./assets/images/user-name.svg");
-  }
+  margin: 0 0 30px 0;
 }
-.form-input-placeholder {
+
+.form__lable-img {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 50px;
-  transition: 0.3s;
+  top: 15px;
+  left: 16px;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
 }
+
 .form-input {
   width: 100%;
   height: 100%;
@@ -103,13 +250,58 @@ export default {};
   border-radius: 5px;
   border: 1px solid var(--color-primary);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-  outline: transparent;
-
-  &:focus + .form-input-placeholder {
-    font-size: 11px;
-    color: var(--color-secondary);
-    top: 8px;
-    transform: translateY(0px);
+  &:focus {
+    outline: transparent;
   }
+}
+.form-input:focus + .form-input__placeholder,
+.form-input__placeholder.form-input__placeholder-active {
+  font-size: 11px;
+  color: var(--color-secondary);
+  transform: translateY(-20px);
+}
+.form-input:focus,
+.form-input.form-input-active {
+  background: rgba(0, 0, 0, 0.4);
+}
+.form-input__placeholder {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50px;
+  transition: 0.3s;
+}
+
+.form-checkbox {
+  position: absolute;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.form__checkbox {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  border-radius: 3px;
+  background-color: var(--color-secondary);
+  z-index: 1;
+  transition: 0.3s;
+}
+.form__descr {
+  padding: 0 0 0 25px;
+}
+
+.form-checkbox:checked + .form__checkbox {
+  background-color: blue;
+}
+
+.form-checkbox:focus + .form__checkbox {
+  background-color: red;
+}
+
+.form-checkbox:checked:focus + .form__checkbox {
+  background-color: red;
 }
 </style>
