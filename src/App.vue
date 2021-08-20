@@ -138,20 +138,24 @@
             >Email</span
           >
         </label>
-        <label class="form__lable">
-          <input type="checkbox" class="form-checkbox" />
-          <span class="form__checkbox"></span>
-          <span class="form__descr"
-            >I agree to the <span class="">Terms & Conditions</span>
-          </span>
-        </label>
+
+        <v-checkbox></v-checkbox>
+
+        <v-button> Sing Up </v-button>
       </form>
     </div>
   </section>
 </template>
 
 <script>
+import vButton from "./components/vButton.vue";
+import vCheckbox from "./components/vCheckbox.vue";
+
 export default {
+  components: {
+    vCheckbox,
+    vButton,
+  },
   data() {
     return {
       isActiveNameInput: "",
@@ -172,6 +176,7 @@ export default {
   height: 100vh;
   position: relative;
   z-index: 0;
+  overflow: hidden;
 
   &::before {
     content: "";
@@ -231,6 +236,10 @@ export default {
   margin: 0 0 30px 0;
 }
 
+.form__lable--checkbox {
+  height: 22px;
+}
+
 .form__lable-img {
   position: absolute;
   top: 15px;
@@ -270,38 +279,5 @@ export default {
   transform: translateY(-50%);
   left: 50px;
   transition: 0.3s;
-}
-
-.form-checkbox {
-  position: absolute;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-.form__checkbox {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 0;
-  left: 0;
-  border-radius: 3px;
-  background-color: var(--color-secondary);
-  z-index: 1;
-  transition: 0.3s;
-}
-.form__descr {
-  padding: 0 0 0 25px;
-}
-
-.form-checkbox:checked + .form__checkbox {
-  background-color: blue;
-}
-
-.form-checkbox:focus + .form__checkbox {
-  background-color: red;
-}
-
-.form-checkbox:checked:focus + .form__checkbox {
-  background-color: red;
 }
 </style>
