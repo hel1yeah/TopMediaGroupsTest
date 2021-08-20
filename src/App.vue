@@ -259,10 +259,14 @@ export default {
   border-radius: 5px;
   border: 1px solid var(--color-primary);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-  &:focus {
-    outline: transparent;
+  &:hover {
+    border: 1px solid var(--color-secondary);
   }
 }
+.form-input:focus {
+  outline: transparent;
+}
+
 .form-input:focus + .form-input__placeholder,
 .form-input__placeholder.form-input__placeholder-active {
   font-size: 11px;
