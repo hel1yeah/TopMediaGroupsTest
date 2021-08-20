@@ -64,6 +64,7 @@
             >Country</span
           >
         </label>
+
         <label class="form__lable">
           <img
             class="form__lable-img"
@@ -143,16 +144,19 @@
 
         <v-button> Sing Up </v-button>
       </form>
+      <v-select></v-select>
     </div>
   </section>
 </template>
 
 <script>
-import vButton from "./components/vButton.vue";
+import vSelect from "./components/vSelect.vue";
 import vCheckbox from "./components/vCheckbox.vue";
+import vButton from "./components/vButton.vue";
 
 export default {
   components: {
+    vSelect,
     vCheckbox,
     vButton,
   },
