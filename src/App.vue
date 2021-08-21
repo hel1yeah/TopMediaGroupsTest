@@ -7,7 +7,7 @@
         <span class="title__highlight">Sign Up</span> and find the best place to
         rest while traveling
       </h1>
-      <form class="form">
+      <form class="form" @submit.prevent="onSubmit">
         <label class="form__lable">
           <img
             class="form__lable-img"
@@ -103,7 +103,6 @@
             >Confirm password</span
           >
         </label>
-
         <label class="form__lable">
           <img
             class="form__lable-img"
@@ -122,7 +121,6 @@
             >Email</span
           >
         </label>
-
         <v-checkbox></v-checkbox>
 
         <v-button> Sing Up </v-button>
@@ -157,6 +155,9 @@ export default {
     selectOption(option) {
       this.isActiveCountryInput = option.name;
       this.isActivePhoneInput = option.value;
+    },
+    onSubmit() {
+      console.log("x");
     },
   },
 };
