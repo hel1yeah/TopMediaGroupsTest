@@ -121,6 +121,7 @@
             >Confirm password</span
           >
         </label>
+
         <label class="form__lable">
           <img
             class="form__lable-img"
@@ -141,10 +142,9 @@
         </label>
 
         <v-checkbox></v-checkbox>
-
+        <v-select></v-select>
         <v-button> Sing Up </v-button>
       </form>
-      <v-select></v-select>
     </div>
   </section>
 </template>

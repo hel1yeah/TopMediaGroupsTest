@@ -1,6 +1,18 @@
 <template>
-  <div class="select">
-    <p><Select></Select></p>
+  <div class="select" @click="areOptionsVisible = !areOptionsVisible">
+    <img
+      class="select__img"
+      src="./../assets/images/map-marker.svg"
+      alt="Name"
+    />
+    <span class="select__title">select</span>
+    <div class="select__options--wrapper">
+      <div class="select__options" v-if="areOptionsVisible">
+        <p class="select__option" v-for="option in options" :key="option">
+          {{ option.name }}
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,6 +21,7 @@ export default {
   name: "vSelect",
   data() {
     return {
+      areOptionsVisible: false,
       options: [
         { name: "Ukraine", value: "+380" },
         { name: "Belarus", value: "+375" },
@@ -23,4 +36,78 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.select {
+  position: relative;
+  width: 300px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5px 0 50px;
+  background: transparent;
+  color: var(--color-quinary);
+  border-radius: 5px;
+  border: 1px solid var(--color-primary);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+  &:hover {
+    border: 1px solid var(--color-secondary);
+  }
+}
+.select__img {
+  position: absolute;
+  top: 15px;
+  left: 16px;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+}
+.select__title {
+  margin: 0;
+}
+.select__options--wrapper {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 160px;
+  border-radius: 5px;
+}
+.select__options {
+  z-index: 5;
+  background-color: var(--color-primary);
+  color: var(--color-option);
+  overflow: auto;
+  width: 100%;
+  height: 160px;
+  padding: 21px 23px 5px;
+  // scrollbar customize firefox
+  scrollbar-color: var(--color-option) var(--color-primary);
+  scrollbar-width: thin;
+  // scrollbar customize webkit
+  &::-webkit-scrollbar {
+    width: 3px;
+    background-color: var(--color-primary);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-option);
+    width: 5px;
+    border-radius: 20px;
+  }
+}
+
+.select__option {
+  font-family: "Rubik-Light", sans-serif;
+  font-size: 15px;
+  margin: 0 0 12px;
+  transition: 0.3s;
+  cursor: pointer;
+  &:hover {
+    padding: 0 0 0 9px;
+    color: var(--color-dark);
+  }
+}
+</style>
