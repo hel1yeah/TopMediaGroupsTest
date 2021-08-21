@@ -1,5 +1,5 @@
 <template>
-  <button class="form-button">
+  <button class="form-button" type="submit">
     <slot></slot>
   </button>
 </template>
@@ -25,6 +25,7 @@ export default {
   width: 165px;
   height: 56px;
   cursor: pointer;
+  margin: 0 auto 0 0;
 
   transition: 0.3s;
   &:hover {
