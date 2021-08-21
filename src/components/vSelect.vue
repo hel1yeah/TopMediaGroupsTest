@@ -1,14 +1,31 @@
 <template>
-  <div class="select" @click="areOptionsVisible = !areOptionsVisible">
+  <div
+    class="select"
+    :class="{ 'select-active': selectActive }"
+    @click="
+      areOptionsVisible = !areOptionsVisible;
+      lableActive();
+    "
+  >
     <img
       class="select__img"
       src="./../assets/images/map-marker.svg"
       alt="Name"
     />
-    <span class="select__title">select</span>
-    <div class="select__options--wrapper">
-      <div class="select__options" v-if="areOptionsVisible">
-        <p class="select__option" v-for="option in options" :key="option">
+    <span
+      class="select__placeholder"
+      :class="{ 'placeholder-active': isLableActive }"
+      >Country</span
+    >
+    <span>{{ selected }}</span>
+    <div class="select__options--wrapper" v-if="areOptionsVisible">
+      <div class="select__options">
+        <p
+          class="select__option"
+          v-for="option in options"
+          :key="option"
+          @click="selectOption(option)"
+        >
           {{ option.name }}
         </p>
       </div>
@@ -19,9 +36,14 @@
 <script>
 export default {
   name: "vSelect",
+  emits: ["onSelect"],
+
   data() {
     return {
       areOptionsVisible: false,
+      selected: null,
+      selectActive: false,
+      isLableActive: false,
       options: [
         { name: "Ukraine", value: "+380" },
         { name: "Belarus", value: "+375" },
@@ -33,14 +55,28 @@ export default {
       ],
     };
   },
+  methods: {
+    selectOption(option) {
+      this.selected = option.name;
+      this.selectActive = true;
+      this.areOptionsVisible != this.areOptionsVisible;
+      this.$emit("onSelect", option);
+    },
+    lableActive() {
+      this.isLableActive = true;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .select {
+  z-index: 55;
   position: relative;
+  cursor: pointer;
   width: 300px;
   height: 56px;
+  margin: 0 0 30px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,6 +90,10 @@ export default {
   &:hover {
     border: 1px solid var(--color-secondary);
   }
+  &.select-active {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--color-secondary);
+  }
 }
 .select__img {
   position: absolute;
@@ -63,8 +103,17 @@ export default {
   height: 24px;
   z-index: 1;
 }
-.select__title {
-  margin: 0;
+.select__placeholder {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50px;
+  transition: 0.3s;
+  &.placeholder-active {
+    font-size: 11px;
+    color: var(--color-secondary);
+    transform: translateY(-20px);
+  }
 }
 .select__options--wrapper {
   position: absolute;
@@ -77,7 +126,7 @@ export default {
   border-radius: 5px;
 }
 .select__options {
-  z-index: 5;
+  z-index: 999;
   background-color: var(--color-primary);
   color: var(--color-option);
   overflow: auto;

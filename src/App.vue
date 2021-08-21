@@ -46,25 +46,7 @@
             >Second Name</span
           >
         </label>
-        <label class="form__lable">
-          <img
-            class="form__lable-img"
-            src="./assets/images/map-marker.svg"
-            alt="Country"
-          />
-          <input
-            type="text"
-            class="form-input"
-            :class="{ 'form-input-active': isActiveCountryInput }"
-            v-model="isActiveCountryInput"
-          />
-          <span
-            class="form-input__placeholder"
-            :class="{ 'form-input__placeholder-active': isActiveCountryInput }"
-            >Country</span
-          >
-        </label>
-
+        <v-select @onSelect="selectOption"> </v-select>
         <label class="form__lable">
           <img
             class="form__lable-img"
@@ -142,7 +124,7 @@
         </label>
 
         <v-checkbox></v-checkbox>
-        <v-select></v-select>
+
         <v-button> Sing Up </v-button>
       </form>
     </div>
@@ -170,6 +152,12 @@ export default {
       isActiveConfirmPasswordInput: "",
       isActiveEmailInput: "",
     };
+  },
+  methods: {
+    selectOption(option) {
+      this.isActiveCountryInput = option.name;
+      this.isActivePhoneInput = option.value;
+    },
   },
 };
 </script>
@@ -256,7 +244,7 @@ export default {
 .form-input {
   width: 100%;
   height: 100%;
-  padding: 0 5px 0 50px;
+  padding: 7px 5px 0 50px;
   background: transparent;
   position: relative;
   color: var(--color-quinary);
