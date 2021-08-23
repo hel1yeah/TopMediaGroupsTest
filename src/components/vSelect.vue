@@ -35,8 +35,8 @@
 
 <script>
 export default {
-  name: "vSelect",
-  emits: ["onSelect"],
+  name: 'vSelect',
+  emits: ['onSelect'],
 
   data() {
     return {
@@ -45,13 +45,13 @@ export default {
       selectActive: false,
       isLableActive: false,
       options: [
-        { name: "Ukraine", value: "+380" },
-        { name: "Belarus", value: "+375" },
-        { name: "Moldova", value: "+373" },
-        { name: "Poland", value: "+48" },
-        { name: "Turkey", value: "+90" },
-        { name: "Israel", value: "+850" },
-        { name: "North Korea", value: "+850" },
+        { name: 'Ukraine', value: 380 },
+        { name: 'Belarus', value: 375 },
+        { name: 'Moldova', value: 373 },
+        { name: 'Poland', value: 48 },
+        { name: 'Turkey', value: 90 },
+        { name: 'Israel', value: 850 },
+        { name: 'North Korea', value: 850 },
       ],
     };
   },
@@ -60,7 +60,7 @@ export default {
       this.selected = option.name;
       this.selectActive = true;
       this.areOptionsVisible != this.areOptionsVisible;
-      this.$emit("onSelect", option);
+      this.$emit('onSelect', option);
     },
     lableActive() {
       this.isLableActive = true;
@@ -149,7 +149,7 @@ export default {
 }
 
 .select__option {
-  font-family: "Rubik-Light", sans-serif;
+  font-family: 'Rubik-Light', sans-serif;
   font-size: 15px;
   margin: 0 0 12px;
   transition: 0.3s;

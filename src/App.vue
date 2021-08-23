@@ -17,12 +17,13 @@
           <input
             type="text"
             class="form-input"
-            :class="{ 'form-input-active': isActiveNameInput }"
-            v-model="isActiveNameInput"
+            :class="{ 'form-input-active': firstNameInput }"
+            v-model.trim="firstNameInput"
+            max="22"
           />
           <span
             class="form-input__placeholder"
-            :class="{ 'form-input__placeholder-active': isActiveNameInput }"
+            :class="{ 'form-input__placeholder-active': firstNameInput }"
             >First Name</span
           >
         </label>
@@ -35,18 +36,20 @@
           <input
             type="text"
             class="form-input"
-            :class="{ 'form-input-active': isActiveSecondNameInput }"
-            v-model="isActiveSecondNameInput"
+            :class="{ 'form-input-active': secondNameInput }"
+            v-model.trim="secondNameInput"
           />
           <span
             class="form-input__placeholder"
             :class="{
-              'form-input__placeholder-active': isActiveSecondNameInput,
+              'form-input__placeholder-active': secondNameInput,
             }"
             >Second Name</span
           >
         </label>
+
         <v-select @onSelect="selectOption"> </v-select>
+
         <label class="form__lable">
           <img
             class="form__lable-img"
@@ -54,14 +57,14 @@
             alt="Phone"
           />
           <input
-            type="text"
-            class="form-input"
-            :class="{ 'form-input-active': isActivePhoneInput }"
-            v-model="isActivePhoneInput"
+            type="number"
+            class="form-input number-input"
+            :class="{ 'form-input-active': phoneInput }"
+            v-model.number="phoneInput"
           />
           <span
             class="form-input__placeholder"
-            :class="{ 'form-input__placeholder-active': isActivePhoneInput }"
+            :class="{ 'form-input__placeholder-active': phoneInput }"
             >Phone</span
           >
         </label>
@@ -74,12 +77,12 @@
           <input
             type="text"
             class="form-input"
-            :class="{ 'form-input-active': isActivePasswordInput }"
-            v-model="isActivePasswordInput"
+            :class="{ 'form-input-active': passwordInput }"
+            v-model.trim="passwordInput"
           />
           <span
             class="form-input__placeholder"
-            :class="{ 'form-input__placeholder-active': isActivePasswordInput }"
+            :class="{ 'form-input__placeholder-active': passwordInput }"
             >Password</span
           >
         </label>
@@ -92,13 +95,13 @@
           <input
             type="text"
             class="form-input"
-            :class="{ 'form-input-active': isActiveConfirmPasswordInput }"
-            v-model="isActiveConfirmPasswordInput"
+            :class="{ 'form-input-active': confirmPasswordInput }"
+            v-model.trim="confirmPasswordInput"
           />
           <span
             class="form-input__placeholder"
             :class="{
-              'form-input__placeholder-active': isActiveConfirmPasswordInput,
+              'form-input__placeholder-active': confirmPasswordInput,
             }"
             >Confirm password</span
           >
@@ -112,16 +115,16 @@
           <input
             type="text"
             class="form-input"
-            :class="{ 'form-input-active': isActiveEmailInput }"
-            v-model="isActiveEmailInput"
+            :class="{ 'form-input-active': emailInput }"
+            v-model.trim="emailInput"
           />
           <span
             class="form-input__placeholder"
-            :class="{ 'form-input__placeholder-active': isActiveEmailInput }"
+            :class="{ 'form-input__placeholder-active': emailInput }"
             >Email</span
           >
         </label>
-        <v-checkbox></v-checkbox>
+        <v-checkbox @onAgree="selectAgree"></v-checkbox>
 
         <v-button> Sing Up </v-button>
       </form>
@@ -130,9 +133,9 @@
 </template>
 
 <script>
-import vSelect from "./components/vSelect.vue";
-import vCheckbox from "./components/vCheckbox.vue";
-import vButton from "./components/vButton.vue";
+import vSelect from './components/vSelect.vue';
+import vCheckbox from './components/vCheckbox.vue';
+import vButton from './components/vButton.vue';
 
 export default {
   components: {
@@ -142,22 +145,53 @@ export default {
   },
   data() {
     return {
-      isActiveNameInput: "",
-      isActiveSecondNameInput: "",
-      isActiveCountryInput: "",
-      isActivePhoneInput: "",
-      isActivePasswordInput: "",
-      isActiveConfirmPasswordInput: "",
-      isActiveEmailInput: "",
+      firstNameInput: '',
+      secondNameInput: '',
+      countryInput: '',
+      phoneInput: '',
+      passwordInput: '',
+      confirmPasswordInput: '',
+      emailInput: '',
+      isAgree: '',
     };
   },
   methods: {
     selectOption(option) {
-      this.isActiveCountryInput = option.name;
-      this.isActivePhoneInput = option.value;
+      this.countryInput = option.name;
+      this.phoneInput = option.value;
+    },
+    selectAgree(isAgree) {
+      this.isAgree = isAgree;
+      console.log(this.isAgree);
     },
     onSubmit() {
-      console.log("x");
+      let user = {
+        firstName: this.firstNameInput,
+        secondName: this.secondNameInput,
+        country: this.countryInput,
+        phone: this.phoneInput,
+        password: this.passwordInput,
+        confirmPassword: this.confirmPasswordInput,
+        email: this.emailInput,
+        agree: this.isAgree,
+      };
+      console.log(this.firstNameInput);
+      //       getWorks({ commit }) {
+      //   return new Promise((resolve) => {
+      //     axios
+      //       .post(
+      //         'https://anmgeodpxvrfszcufzij.supabase.co/rest/v1',
+      //       )
+      //       .then((response) => {
+      //         if (response.status === 200) {
+      //           commit('isProjectsUploadSuccess', response.data)
+      //         }
+      //       })
+      //       .catch((err) => {
+      //         commit('isProjectsUploadFailure', err)
+      //       })
+      //   })
+      // },
     },
   },
 };
@@ -172,7 +206,7 @@ export default {
   overflow: hidden;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     width: 100%;
     height: 100%;
@@ -192,7 +226,7 @@ export default {
   width: 110%;
   height: 110%;
   background: {
-    image: url("./assets/images/bg.jpg");
+    image: url('./assets/images/bg.jpg');
     position: center center;
     size: cover;
     repeat: no-repeat;
@@ -211,7 +245,7 @@ export default {
   color: var(--color-secondary);
 }
 .form {
-  font-family: "Rubik-Light", sans-serif;
+  font-family: 'Rubik-Light', sans-serif;
   font-size: 19px;
   max-width: 630px;
   margin: 55px auto;
@@ -276,5 +310,27 @@ export default {
   transform: translateY(-50%);
   left: 50px;
   transition: 0.3s;
+}
+
+.number-input[type='number']::-webkit-outer-spin-button,
+.number-input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// delete arrow Chrome
+.number-input[type='number'] {
+  -moz-appearance: textfield;
+}
+// delete arrow mazila
+.number-input[type='number']:hover,
+.number-input[type='number']:focus {
+  -moz-appearance: number-input;
+}
+// delete arrow other brouser
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 </style>

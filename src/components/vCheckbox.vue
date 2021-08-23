@@ -1,6 +1,11 @@
 <template>
   <label class="form__lable form__lable--checkbox">
-    <input type="checkbox" class="form-checkbox" />
+    <input
+      type="checkbox"
+      v-model="isAgree"
+      class="form-checkbox"
+      @change="onAgree"
+    />
     <span class="form__checkbox"></span>
     <span class="form__descr"
       >I agree to the
@@ -11,9 +16,17 @@
 
 <script>
 export default {
-  name: "vCheckbox",
+  name: 'vCheckbox',
+  emits: ['onAgree'],
   data() {
-    return {};
+    return {
+      isAgree: '',
+    };
+  },
+  methods: {
+    onAgree() {
+      this.$emit('onAgree', this.isAgree);
+    },
   },
 };
 </script>
@@ -43,9 +56,10 @@ export default {
 }
 
 // checked
+
 .form-checkbox:checked + .form__checkbox {
   background-color: var(--color-secondary);
-  background: url("./../assets/images/checkbox.svg");
+  background: url('./../assets/images/checkbox.svg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -71,7 +85,7 @@ export default {
 }
 
 .form__descr {
-  font-family: "Rubik-Light ", sans-serif;
+  font-family: 'Rubik-Light ', sans-serif;
   font-size: 15px;
 }
 .form-link {
@@ -81,7 +95,7 @@ export default {
   outline: transparent;
   transition: 3s;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 22px;
     left: 0;
