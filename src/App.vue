@@ -2,133 +2,139 @@
   <section class="page-form">
     <div class="page-form-bg"></div>
     <div class="container">
-      <img class="logo" src="./assets/images/logo.svg" alt="BestRest logo" />
-      <h1 class="title">
-        <span class="title__highlight">Sign Up</span> and find the best place to
-        rest while traveling
-      </h1>
-      <form class="form" @submit.prevent="onSubmit">
-        <label class="form__lable">
-          <img
-            class="form__lable-img"
-            src="./assets/images/user-name.svg"
-            alt="Name"
-          />
-          <input
-            type="text"
-            class="form-input"
-            :class="{ 'form-input-active': firstNameInput }"
-            v-model.trim="firstNameInput"
-            max="22"
-          />
-          <span
-            class="form-input__placeholder"
-            :class="{ 'form-input__placeholder-active': firstNameInput }"
-            >First Name</span
-          >
-        </label>
-        <label class="form__lable">
-          <img
-            class="form__lable-img"
-            src="./assets/images/user-second.svg"
-            alt="Second Name"
-          />
-          <input
-            type="text"
-            class="form-input"
-            :class="{ 'form-input-active': secondNameInput }"
-            v-model.trim="secondNameInput"
-          />
-          <span
-            class="form-input__placeholder"
-            :class="{
-              'form-input__placeholder-active': secondNameInput,
-            }"
-            >Second Name</span
-          >
-        </label>
+      <div class="page-form__inner">
+        <img class="logo" src="./assets/images/logo.svg" alt="BestRest logo" />
+        <h1 class="title">
+          <span class="title__highlight">Sign Up</span> and find the best place
+          to rest while traveling
+        </h1>
+        <form class="form" @submit.prevent="onSubmit">
+          <label class="form__lable">
+            <img
+              class="form__lable-img"
+              src="./assets/images/user-name.svg"
+              alt="Name"
+            />
+            <input
+              type="text"
+              class="form-input"
+              :class="{ 'form-input-active': firstNameInput }"
+              v-model.trim="firstNameInput"
+              max="22"
+            />
+            <span
+              class="form-input__placeholder"
+              :class="{ 'form-input__placeholder-active': firstNameInput }"
+              >First Name</span
+            >
+          </label>
+          <label class="form__lable">
+            <img
+              class="form__lable-img"
+              src="./assets/images/user-second.svg"
+              alt="Second Name"
+            />
+            <input
+              type="text"
+              class="form-input"
+              :class="{ 'form-input-active': secondNameInput }"
+              v-model.trim="secondNameInput"
+            />
+            <span
+              class="form-input__placeholder"
+              :class="{
+                'form-input__placeholder-active': secondNameInput,
+              }"
+              >Second Name</span
+            >
+          </label>
+          <!-- v-select  -->
+          <v-select @onSelect="selectOption"> </v-select>
 
-        <v-select @onSelect="selectOption"> </v-select>
-
-        <label class="form__lable">
-          <img
-            class="form__lable-img"
-            src="./assets/images/phone.svg"
-            alt="Phone"
-          />
-          <input
-            type="number"
-            class="form-input number-input"
-            :class="{ 'form-input-active': phoneInput }"
-            v-model.number="phoneInput"
-          />
-          <span
-            class="form-input__placeholder"
-            :class="{ 'form-input__placeholder-active': phoneInput }"
-            >Phone</span
-          >
-        </label>
-        <label class="form__lable">
-          <img
-            class="form__lable-img"
-            src="./assets/images/padlock.svg"
-            alt="Password"
-          />
-          <input
-            type="text"
-            class="form-input"
-            :class="{ 'form-input-active': passwordInput }"
-            v-model.trim="passwordInput"
-          />
-          <span
-            class="form-input__placeholder"
-            :class="{ 'form-input__placeholder-active': passwordInput }"
-            >Password</span
-          >
-        </label>
-        <label class="form__lable">
-          <img
-            class="form__lable-img"
-            src="./assets/images/padlock-confirm.svg"
-            alt="Confirm Password"
-          />
-          <input
-            type="text"
-            class="form-input"
-            :class="{ 'form-input-active': confirmPasswordInput }"
-            v-model.trim="confirmPasswordInput"
-          />
-          <span
-            class="form-input__placeholder"
-            :class="{
-              'form-input__placeholder-active': confirmPasswordInput,
-            }"
-            >Confirm password</span
-          >
-        </label>
-        <label class="form__lable">
-          <img
-            class="form__lable-img"
-            src="./assets/images/email.svg"
-            alt="Email"
-          />
-          <input
-            type="text"
-            class="form-input"
-            :class="{ 'form-input-active': emailInput }"
-            v-model.trim="emailInput"
-          />
-          <span
-            class="form-input__placeholder"
-            :class="{ 'form-input__placeholder-active': emailInput }"
-            >Email</span
-          >
-        </label>
-        <v-checkbox @onAgree="selectAgree"></v-checkbox>
-
-        <v-button> Sing Up </v-button>
-      </form>
+          <label class="form__lable">
+            <img
+              class="form__lable-img"
+              src="./assets/images/phone.svg"
+              alt="Phone"
+            />
+            <input
+              type="number"
+              class="form-input number-input"
+              :class="{ 'form-input-active': phoneInput }"
+              v-model.number="phoneInput"
+            />
+            <span
+              class="form-input__placeholder"
+              :class="{ 'form-input__placeholder-active': phoneInput }"
+              >Phone</span
+            >
+          </label>
+          <label class="form__lable">
+            <img
+              class="form__lable-img"
+              src="./assets/images/padlock.svg"
+              alt="Password"
+            />
+            <input
+              type="text"
+              class="form-input"
+              :class="{ 'form-input-active': passwordInput }"
+              v-model.trim="passwordInput"
+            />
+            <span
+              class="form-input__placeholder"
+              :class="{ 'form-input__placeholder-active': passwordInput }"
+              >Password</span
+            >
+          </label>
+          <label class="form__lable">
+            <img
+              class="form__lable-img"
+              src="./assets/images/padlock-confirm.svg"
+              alt="Confirm Password"
+            />
+            <input
+              type="text"
+              class="form-input"
+              :class="{ 'form-input-active': confirmPasswordInput }"
+              v-model.trim="confirmPasswordInput"
+            />
+            <span
+              class="form-input__placeholder"
+              :class="{
+                'form-input__placeholder-active': confirmPasswordInput,
+              }"
+              >Confirm password</span
+            >
+          </label>
+          <label class="form__lable">
+            <img
+              class="form__lable-img"
+              src="./assets/images/email.svg"
+              alt="Email"
+            />
+            <input
+              type="text"
+              class="form-input"
+              :class="{ 'form-input-active': emailInput }"
+              v-model.trim="emailInput"
+            />
+            <span
+              class="form-input__placeholder"
+              :class="{ 'form-input__placeholder-active': emailInput }"
+              >Email</span
+            >
+          </label>
+          <!-- v-checkbox  -->
+          <v-checkbox @onAgree="selectAgree"></v-checkbox>
+          <!-- v-button  -->
+          <v-button> Sing Up </v-button>
+        </form>
+      </div>
     </div>
+    <span class="log-in">
+      If you have an account, <a class="log-in__link" href="#">Log In</a>
+    </span>
   </section>
 </template>
 
@@ -136,6 +142,8 @@
 import vSelect from './components/vSelect.vue';
 import vCheckbox from './components/vCheckbox.vue';
 import vButton from './components/vButton.vue';
+
+// import axios from 'axios';
 
 export default {
   components: {
@@ -162,7 +170,6 @@ export default {
     },
     selectAgree(isAgree) {
       this.isAgree = isAgree;
-      console.log(this.isAgree);
     },
     onSubmit() {
       let user = {
@@ -175,24 +182,49 @@ export default {
         email: this.emailInput,
         agree: this.isAgree,
       };
-      console.log(this.firstNameInput);
-      //       getWorks({ commit }) {
-      //   return new Promise((resolve) => {
-      //     axios
-      //       .post(
-      //         'https://anmgeodpxvrfszcufzij.supabase.co/rest/v1',
-      //       )
-      //       .then((response) => {
-      //         if (response.status === 200) {
-      //           commit('isProjectsUploadSuccess', response.data)
-      //         }
-      //       })
-      //       .catch((err) => {
-      //         commit('isProjectsUploadFailure', err)
-      //       })
-      //   })
-      // },
+      console.log(user);
+      // this.sendUser(user);
+      // this.getUsers();
     },
+    // sendUser(user) {
+    //   const URL = 'https://anmgeodpxvrfszcufzij.supabase.co/rest/v1';
+    //   const bearer =
+    //     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyODUwNzUzNCwiZXhwIjoxOTQ0MDgzNTM0fQ.g47vU8N9LWJQOoV5mao0cUGeTvG5gAk515YLa51mmtI';
+    //   const config = {
+    //     headers: {
+    //       'Access-Control-Allow-Origin': '*',
+    //       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    //     },
+    //   };
+    //   return new Promise(() => {
+    //     axios
+    //       .post(URL, user, config, {
+    //         access_token: bearer,
+    //         token_type: 'bearer',
+    //       })
+    //       .then((res) => {
+    //         console.log(res);
+    //       })
+    //       .catch((err) => {
+    //         console.log(err);
+    //       });
+    //   });
+    // },
+    // getUsers() {
+    //   console.log('getUsers');
+    //   const URL = 'https://anmgeodpxvrfszcufzij.supabase.co/rest/v1';
+
+    //   return new Promise(() => {
+    //     axios
+    //       .get(URL)
+    //       .then((res) => {
+    //         console.log(res);
+    //       })
+    //       .catch((err) => {
+    //         console.log(err);
+    //       });
+    //   });
+    // },
   },
 };
 </script>
@@ -232,10 +264,17 @@ export default {
     repeat: no-repeat;
   }
 }
+.page-form__inner {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
 .logo {
   display: block;
   margin: 0 auto;
-  padding: 170px 0 0;
 }
 .title {
   margin: 32px 0 0;
@@ -332,5 +371,36 @@ input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.log-in {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Rubik-Light', sans-serif;
+  font-size: 15px;
+}
+.log-in__link {
+  color: var(--color-secondary);
+  text-decoration: none;
+  position: relative;
+  outline: transparent;
+  transition: 0.3s;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    left: 0;
+    width: 100%;
+    border: 0.5px solid var(--color-secondary);
+  }
+  &:hover::before {
+    transition: 0.3s;
+    border: 0.5px solid var(--color-quinary);
+  }
+  &:focus::before {
+    border: 0.5px solid var(--color-primary);
+  }
 }
 </style>

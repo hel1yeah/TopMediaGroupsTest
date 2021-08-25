@@ -102,9 +102,12 @@ export default {
     width: 100%;
     border: 0.5px solid var(--color-secondary);
   }
-}
-
-.form-link:focus::before {
-  border: 0.5px solid var(--color-primary);
+  &:hover:before {
+    transition: 0.3s;
+    border: 0.5px solid var(--color-quinary);
+  }
+  &:focus::before {
+    border: 0.5px solid var(--color-primary);
+  }
 }
 </style>
