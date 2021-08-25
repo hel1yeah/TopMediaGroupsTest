@@ -291,6 +291,7 @@ export default {
 
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
@@ -401,6 +402,12 @@ input[type='number']::-webkit-outer-spin-button {
   }
   &:focus::before {
     border: 0.5px solid var(--color-primary);
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .form {
+    flex-direction: column;
   }
 }
 </style>
