@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Rubik-Medium"; // семейство
+  src: local("Rubik-Medium"), url("../fonts/Rubik-Medium.woff2") format("woff2"),
+    url("../fonts/Rubik-Medium.woff") format("woff"); //format
+  font-weight: 500; // насыщенность
+  font-style: normal; // стиль
+}
+
+@font-face {
+  font-family: "Rubik-Light"; // семейство
+  src: local("Rubik-Light"), url("../fonts/Rubik-Light.woff2") format("woff2"),
+    url("../fonts/Rubik-Light.woff") format("woff"); //format
+  font-weight: 300; // насыщенность
+  font-style: normal; // стиль
+}
