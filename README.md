@@ -1,24 +1,16 @@
 # top-media-groups-test
 
-## Project setup
-```
-npm install
-```
+## Задача: Создание формы регистрации на сайте.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+* В файле по ссылке присутствуют подсказки на втором и третьем макете. Чтобы их включить нужно нажать клавишу “С”.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+* Все изменения положения  или  свойств элементов должны происходить с плавностью. Поэтому нужно при ховерах и фокусе использовать transition: 0.3s.
 
-### Lints and fixes files
-```
-npm run lint
-```
+* После выбора страны, в инпуте телефона должна появится маска под код выбранной страны 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* Контент должен находится в окне, по центру вертикально и горизонтально, кроме кнопки Log In, она должна быть прижата к низу.
+
+* Принцип работы инпутов как в Material Design, при фокусе плейсхолдер поднимается вверх и становится меньше, а под ним уже вводятся данные.
+
+
+[Макет в Фигме](https://www.figma.com/file/oMP4zE1Ixf5UHPv6XWQFpu/Untitled?node-id=0%3A1)
