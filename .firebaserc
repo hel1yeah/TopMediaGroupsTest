@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "test-castom-form-tmg",
+    "test-castom-form-tmg": "vue-app-212e8"
+  },
+  "targets": {}
+}
